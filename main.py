@@ -1,10 +1,23 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from calculs import calcul_tri  # Importation déplacée en haut pour optimiser
-
+#from calculs import calcul_tri  # Importation déplacée en haut pour optimiser
+from fastapi.middleware.cors import CORSMiddleware
 # Créer une instance de l'application FastAPI
 app = FastAPI()
 
+# Ajouter CORS pour permettre les requêtes depuis ton frontend React
+origins = [
+    "http://localhost:3000",  # Frontend React en local
+    "https://id4sun-fronted.vercel.app",  # Si tu utilises Vercel en production
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Définir un modèle de données pour les entrées de la simulation
 class SimulationInput(BaseModel):
     puissance: float      # Par exemple, la puissance installée en kWc
@@ -19,10 +32,10 @@ def simulate(data: SimulationInput):
     
     # Calcul des résultats
     result = data.puissance * data.productible
-    tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
+    #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
     
     # Retourner les résultats sous forme de dictionnaire
-    return {"result": result, "tri": tri}
+    return {"result": result, "tri": result }
 
     
 
