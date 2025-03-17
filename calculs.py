@@ -30,12 +30,10 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
             "tresorerie": tresorerie
         })
         
-        if tresorerie >= 0:
+        while tresorerie < 0:
             annee_rentabilite = annee
-            break
-    else:
-        annee_rentabilite = "Jamais"
-
+           
+          
     return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
 
     
