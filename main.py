@@ -32,6 +32,7 @@ def simulate(data: SimulationInput):
     
     # Calcul des résultats
     result = data.puissance * data.productible
+    tri=5
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
     
     # Retourner les résultats sous forme de dictionnaire
