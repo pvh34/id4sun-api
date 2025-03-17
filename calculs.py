@@ -32,8 +32,8 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
 
     # Création du DataFrame
     #df = pd.DataFrame(data, columns=["Année", "Revenus", "Charges", "Profit", "Trésorerie"])
-    #return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
-    return tab
+    return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
+    
 # Exemple d'utilisation
 #if __name__ == "__main__":
     capex = 50000
