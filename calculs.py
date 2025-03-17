@@ -16,13 +16,13 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
     revenus_annuels = productible *puissance* tarif_achat
     
     # Création d'un tableau de suivi
-    data = []
+    tab = []
     tresorerie = -capex*puissance*1000  # On commence avec un CAPEX négatif
     for annee in range(1, duree + 1):
         charges = opex  # Supposons des charges fixes chaque année
         profit = revenus_annuels - charges
         tresorerie += profit  # Mise à jour de la trésorerie
-        data.append([annee, revenus_annuels, charges, profit, tresorerie])
+        tab.append([annee, revenus_annuels, charges, profit, tresorerie])
         
         if tresorerie >= 0:
             annee_rentabilite = annee
@@ -32,8 +32,8 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
 
     # Création du DataFrame
     #df = pd.DataFrame(data, columns=["Année", "Revenus", "Charges", "Profit", "Trésorerie"])
-    return {"cashflow": data, "annee_rentabilite": annee_rentabilite}
-
+    #return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
+    return tab
 # Exemple d'utilisation
 #if __name__ == "__main__":
     capex = 50000
