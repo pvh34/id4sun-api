@@ -13,16 +13,22 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
     Calcule l'évolution de la trésorerie pour un projet photovoltaïque.
     """
     # Revenus annuels = productible * tarif d'achat
-    revenus_annuels = productible *puissance* tarif_achat
+    revenus_annuels = productible * puissance * tarif_achat
     
-    # Création d'un tableau de suivi
+    # Création d'un tableau de suivi avec des objets/dictionnaires
     tab = []
-    tresorerie = -capex*puissance*1000  # On commence avec un CAPEX négatif
+    tresorerie = -capex * puissance * 1000  # On commence avec un CAPEX négatif
     for annee in range(1, duree + 1):
         charges = opex  # Supposons des charges fixes chaque année
         profit = revenus_annuels - charges
         tresorerie += profit  # Mise à jour de la trésorerie
-        tab.append([annee, revenus_annuels, charges, profit, tresorerie])
+        tab.append({
+            "année": annee,
+            "revenus": revenus_annuels,
+            "charges": charges,
+            "profit": profit,
+            "tresorerie": tresorerie
+        })
         
         if tresorerie >= 0:
             annee_rentabilite = annee
@@ -30,9 +36,8 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
     else:
         annee_rentabilite = "Jamais"
 
-    # Création du DataFrame
-    #df = pd.DataFrame(data, columns=["Année", "Revenus", "Charges", "Profit", "Trésorerie"])
     return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
+
     
 # Exemple d'utilisation
 #if __name__ == "__main__":

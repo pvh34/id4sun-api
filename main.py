@@ -39,7 +39,7 @@ def simulate(data: SimulationInput):
     #result = data.puissance * data.productible
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
     business_plan = calcul_business_plan(data.capex, data.opex, data.puissance, data.productible, data.tarif_achat, duree)
-
+    
     # Retourner les résultats sous forme de dictionnaire
 
 
