@@ -36,7 +36,7 @@ def simulate(data: SimulationInput):
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
     
     # Retourner les résultats sous forme de dictionnaire
-    return {"result": result, "tri": result }
+    return {"result": result, "tri": tri }
 
     
 
