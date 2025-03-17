@@ -14,7 +14,8 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
     """
     # Revenus annuels = productible * tarif d'achat
     revenus_annuels = productible * puissance * tarif_achat
-    
+    annee_rentabilite = "Jamais"  # Valeur par défaut si jamais la rentabilité n'est pas atteinte
+
     # Création d'un tableau de suivi avec des objets/dictionnaires
     tab = []
     tresorerie = -capex * puissance * 1000  # On commence avec un CAPEX négatif
@@ -30,8 +31,9 @@ def calcul_business_plan(capex, opex, puissance, productible, tarif_achat, duree
             "tresorerie": tresorerie
         })
         
-        while tresorerie < 0:
-            annee_rentabilite = annee
+       # On définit l'année de rentabilité dès que la trésorerie devient positive
+        if tresorerie >= 0 and annee_rentabilite == "Jamais":
+            annee_rentabilite = annee  # Rentabilité atteinte
            
           
     return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
