@@ -3,7 +3,7 @@ from pydantic import BaseModel
 #from calculs import calcul_tri  # Importation déplacée en haut pour optimiser
 from calculs import calcul_business_plan
 from fastapi.middleware.cors import CORSMiddleware
-from calculs import calcul_couts_opex, calcul_couts
+
 
 # Créer une instance de l'application FastAPI
 app = FastAPI()
