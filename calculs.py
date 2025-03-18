@@ -44,7 +44,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree):
     tab = []
     tresorerie = -capex * puissance * 1000  # On commence avec un CAPEX négatif
     for annee in range(1, duree + 1):
-        charges = opex["maintenance"] + opex["assurance"] + opex["gestion"] + opex["TURPE"]  # Supposons des charges fixes chaque année
+        charges = opex["maintenance"]*puissance + opex["assurance"]*puissance + opex["gestion"]*puissance + opex["TURPE"]  # Supposons des charges fixes chaque année
         profit = revenus_annuels - charges
         tresorerie += profit  # Mise à jour de la trésorerie
         tab.append({
