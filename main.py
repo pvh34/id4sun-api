@@ -3,6 +3,8 @@ from pydantic import BaseModel
 #from calculs import calcul_tri  # Importation déplacée en haut pour optimiser
 from calculs import calcul_business_plan
 from fastapi.middleware.cors import CORSMiddleware
+from calculs import calcul_couts_opex, calcul_couts
+
 # Créer une instance de l'application FastAPI
 app = FastAPI()
 
@@ -25,20 +27,18 @@ class SimulationInput(BaseModel):
     productible: float
     capex: float
     tarif_achat: float
-    opex: float
-        
+            
 
 # Créer un endpoint pour la simulation
 @app.post("/simulate")
 def simulate(data: SimulationInput):
     # Définir les paramètres de la simulation
-    taux_inflation = 0.03
-    duree = 20
+    duree = 40
     
     # Calcul des résultats
     #result = data.puissance * data.productible
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
-    business_plan = calcul_business_plan(data.capex, data.opex, data.puissance, data.productible, data.tarif_achat, duree)
+    business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree)
     
     # Retourner les résultats sous forme de dictionnaire
 
