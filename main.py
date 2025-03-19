@@ -35,11 +35,11 @@ class SimulationInput(BaseModel):
 def simulate(data: SimulationInput):
     # Définir les paramètres de la simulation
     duree = 40
-    
+    inflation=2
     # Calcul des résultats
     #result = data.puissance * data.productible
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
-    business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree)
+    business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree, inflation)
     
     # Retourner les résultats sous forme de dictionnaire
 
