@@ -32,7 +32,7 @@ def calcul_couts_opex(puissance):
     }
 
 
-def calcul_business_plan(capex, puissance, productible, tarif_achat, duree):
+def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, inflation):
     """
     Calcule l'évolution de la trésorerie pour un projet photovoltaïque.
     """
@@ -44,7 +44,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree):
     tab = []
     tresorerie = -capex * puissance * 1000  # On commence avec un CAPEX négatif
     for annee in range(1, duree + 1):
-        charges = opex["maintenance"]*puissance + opex["assurance"]*puissance + opex["gestion"]*puissance + opex["TURPE"]  # Supposons des charges fixes chaque année
+        charges = (opex["maintenance"]*puissance + opex["assurance"]*puissance + opex["gestion"]*puissance + opex["TURPE"])*(1+inflation)**annee  # 
         profit = revenus_annuels - charges
         tresorerie += profit  # Mise à jour de la trésorerie
         tab.append({
