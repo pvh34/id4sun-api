@@ -27,7 +27,7 @@ class SimulationInput(BaseModel):
     productible: float
     capex: float
     tarif_achat: float
-    inflation: float
+   
             
 
 # Créer un endpoint pour la simulation
@@ -39,7 +39,7 @@ def simulate(data: SimulationInput):
     # Calcul des résultats
     #result = data.puissance * data.productible
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
-    business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree, data.inflation)
+    business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree)
     
     # Retourner les résultats sous forme de dictionnaire
 
