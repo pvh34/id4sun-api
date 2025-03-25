@@ -37,7 +37,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
     Calcule l'évolution de la trésorerie pour un projet photovoltaïque.
     """
     # Revenus annuels = productible * tarif d'achat
-    revenus_annuels = productible * puissance * tarif_achat
+    
     annee_rentabilite = "Jamais"  # Valeur par défaut si jamais la rentabilité n'est pas atteinte
     opex=calcul_couts_opex(puissance)
     # Création d'un tableau de suivi avec des objets/dictionnaires
@@ -46,7 +46,8 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
     for annee in range(1, duree + 1):
         c = opex["maintenance"]*puissance + opex["assurance"]*puissance + opex["gestion"]*puissance + opex["TURPE"]  # 
         charges=c*(1+inflation/100)**(annee-1)
-        profit = (revenus_annuels)*(1-degrad/100*annee) - charges
+        revenus_annuels = productible * puissance * tarif_achat*(1-degrad/100*annee)
+        profit = (revenus_annuels) - charges
         tresorerie += profit  # Mise à jour de la trésorerie
         tab.append({
             "année": annee,
