@@ -11,7 +11,7 @@ app = FastAPI()
 # Ajouter CORS pour permettre les requêtes depuis ton frontend React
 origins = [
     "http://localhost:3000",  # Frontend React en local
-    "https://id4sun-fronted.vercel.app",  # Si tu utilises Vercel en production
+    "https://id4sun-api.vercel.app",  # Si tu utilises Vercel en production
 ]
 
 app.add_middleware(
