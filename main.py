@@ -44,16 +44,16 @@ def simulate(data: SimulationInput):
     #result = data.puissance * data.productible
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
     business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree, data.inflation, degrad,tpsonduleur,tpsamortissement)
-    flux_tresorerie = [-data.capex * data.puissance * 1000]  # CAPEX initial négatif
-    flux_tresorerie += [annee["profit"] for annee in business_plan["cashflow"]]  # Ajout des flux annuels
+    #flux_tresorerie = [-data.capex * data.puissance * 1000]  # CAPEX initial négatif
+    #flux_tresorerie += [annee["profit"] for annee in business_plan["cashflow"]]  # Ajout des flux annuels
 
-    tri = calcul_tri(flux_tresorerie)
+    #ir = calcul_tri(flux_tresorerie)
     # Retourner les résultats sous forme de dictionnaire
 
 
     return {
         "business_plan": business_plan,
-        "tri": tri
+        #"ir": ir
     }
     
 
