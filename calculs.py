@@ -29,11 +29,11 @@ def calcul_couts_opex(puissance):
 
 def calcul_tri(flux_tresorerie):
     
-    return npf.irr(flux_tresorerie)
+    return npf.irr(flux_tresorerie)*100
 
 def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, inflation,degrad, tpsonduleur,tpsamortissement):
     """
-    Calcule l'évolution de la trésorerie pour un projet photovoltaïque.
+    #Calcule l'évolution de la trésorerie pour un projet photovoltaïque.
     """
     # Revenus annuels = productible * tarif d'achat
     
