@@ -57,7 +57,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
         else:
             renouvellement_onduleur=0
         if annee <= tpsamortissement :
-            amortissement_centrale=(capex*puissance-60*puissance)/tpsamortissement *1000   
+            amortissement_centrale=(capex*puissance*1000-60*puissance)/tpsamortissement    
         else :
             amortissement_centrale=0
         resultat_brut=profit-amortissement_onduleur-amortissement_centrale
