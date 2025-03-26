@@ -43,6 +43,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
     amortissement_centrale = 0
     tab = []
     tresorerie = -capex * puissance * 1000  # On commence avec un CAPEX négatif
+    flux_tresorerie=[tresorerie]
     for annee in range(1, duree + 1):
         c = opex["maintenance"]*puissance + opex["assurance"]*puissance + opex["gestion"]*puissance + opex["TURPE"]  # 
         charges=c*(1+inflation/100)**(annee-1)
@@ -59,6 +60,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
             amortissement_centrale=0
         resultat_brut=profit-amortissement_onduleur-amortissement_centrale
         tresorerie += profit  # Mise à jour de la trésorerie
+        flux_tresorerie.append(tresorerie)
         tab.append({
             "année": annee,
             "revenus": revenus_annuels,
@@ -74,9 +76,9 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
        # On définit l'année de rentabilité dès que la trésorerie devient positive
         if tresorerie >= 0 and annee_rentabilite == "Jamais":
             annee_rentabilite = annee  # Rentabilité atteinte
-           
+    tri=calcul_tri(flux_tresorerie)       
           
-    return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
+    return {"cashflow": tab, "annee_rentabilite": annee_rentabilite, "tri":tri}
 
     
 

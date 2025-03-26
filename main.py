@@ -52,7 +52,7 @@ def simulate(data: SimulationInput):
 
 
     return business_plan
-        #"ir": ir
+        
     
     
 
