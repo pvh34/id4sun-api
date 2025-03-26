@@ -26,9 +26,9 @@ def calcul_couts_opex(puissance):
         "TURPE":TURPE
     }
 
-#def calcul_tri(flux_tresorerie):
+def calcul_tri(flux_tresorerie):
     
-    #return np.irr(flux_tresorerie)
+    return np.irr(flux_tresorerie)
 
 def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, inflation,degrad, tpsonduleur,tpsamortissement):
     """
@@ -77,7 +77,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
        # On définit l'année de rentabilité dès que la trésorerie devient positive
         if tresorerie >= 0 and annee_rentabilite == "Jamais":
             annee_rentabilite = annee  # Rentabilité atteinte
-    tri=2 
+    tri= calcul_tri(flux_tresorerie)
           
     return {"cashflow": tab, "annee_rentabilite": annee_rentabilite, "tri":tri}
 
