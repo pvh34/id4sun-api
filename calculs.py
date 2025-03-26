@@ -1,11 +1,6 @@
 import numpy as np
 import pandas as pd
 
-#def calcul_tri(puissance, productible, taux_inflation, duree):
-    # Ceci est un exemple fictif pour montrer comment structurer la fonction.
-    # Tu remplaceras cette logique par celle de ton fichier Excel.
-    #tri = (puissance * productible) / (1 + taux_inflation) 
-    #return tri
 
 puissances = np.array([0, 3, 9, 36, 100, 250, 1000, 10000])
 maintenance = np.array([60, 60, 28, 12, 11, 8, 6, 4])

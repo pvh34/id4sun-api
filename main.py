@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 #from calculs import calcul_tri  # Importation déplacée en haut pour optimiser
 from calculs import calcul_business_plan
-from calculs import calcul_tri
+#from calculs import calcul_tri
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -51,7 +51,7 @@ def simulate(data: SimulationInput):
     # Retourner les résultats sous forme de dictionnaire
 
 
-    return business_plan,
+    return business_plan
         #"ir": ir
     
     
