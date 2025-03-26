@@ -31,6 +31,8 @@ def calcul_couts_opex(puissance):
         "TURPE":TURPE
     }
 
+def calcul_tri(flux_tresorerie):
+    return np.irr(flux_tresorerie)
 
 def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, inflation,degrad, tpsonduleur,tpsamortissement):
     """
