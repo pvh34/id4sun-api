@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import numpy_financial as npf
 
 
 puissances = np.array([0, 3, 9, 36, 100, 250, 1000, 10000])
@@ -28,7 +29,7 @@ def calcul_couts_opex(puissance):
 
 def calcul_tri(flux_tresorerie):
     
-    return np.irr(flux_tresorerie)
+    return npf.irr(flux_tresorerie)
 
 def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, inflation,degrad, tpsonduleur,tpsamortissement):
     """
@@ -78,7 +79,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
         if tresorerie >= 0 and annee_rentabilite == "Jamais":
             annee_rentabilite = annee  # Rentabilité atteinte
     tri= calcul_tri(flux_tresorerie)
-      
+          
     return {"cashflow": tab, "annee_rentabilite": annee_rentabilite, "tri":tri}
 
     
