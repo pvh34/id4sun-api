@@ -78,7 +78,7 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
         if tresorerie >= 0 and annee_rentabilite == "Jamais":
             annee_rentabilite = annee  # Rentabilité atteinte
     #tri= calcul_tri(flux_tresorerie)
-     tri=2     
+    tri=2     
     return {"cashflow": tab, "annee_rentabilite": annee_rentabilite, "tri":tri}
 
     
