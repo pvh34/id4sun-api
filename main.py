@@ -51,9 +51,8 @@ def simulate(data: SimulationInput):
     # Retourner les résultats sous forme de dictionnaire
 
 
-    return {
-        "business_plan": business_plan,
+    return business_plan,
         #"ir": ir
-    }
+    
     
 
