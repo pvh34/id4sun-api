@@ -37,10 +37,12 @@ def simulate(data: SimulationInput):
     # Définir les paramètres de la simulation
     duree = 40
     degrad=0.4
+    tpsonduleur=12
+    tpsamortissement=20
         # Calcul des résultats
     #result = data.puissance * data.productible
     #tri = calcul_tri(data.puissance, data.productible, taux_inflation, duree)
-    business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree, data.inflation, degrad)
+    business_plan = calcul_business_plan(data.capex, data.puissance, data.productible, data.tarif_achat, duree, data.inflation, degrad,tpsonduleur,tpsamortissement)
     
     # Retourner les résultats sous forme de dictionnaire
 

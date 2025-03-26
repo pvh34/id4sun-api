@@ -32,7 +32,7 @@ def calcul_couts_opex(puissance):
     }
 
 
-def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, inflation,degrad):
+def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, inflation,degrad, tpsonduleur,tpsamortissement):
     """
     Calcule l'évolution de la trésorerie pour un projet photovoltaïque.
     """
@@ -48,12 +48,22 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
         charges=c*(1+inflation/100)**(annee-1)
         revenus_annuels = productible * puissance * tarif_achat*(1-degrad/100*annee)
         profit = (revenus_annuels) - charges
+        if annee==tpsonduleur:
+            renouvellement_onduleur=puissance*60
+            amortissement_onduleur=puissance*60/tpsonduleur
+        if annee <= tpsamortissement :
+            amortissement_centrale=capex*puissance/tpsamortissement    
+        resultat_brut=profit-amortissement_onduleur-amortissement_centrale
         tresorerie += profit  # Mise à jour de la trésorerie
         tab.append({
             "année": annee,
             "revenus": revenus_annuels,
             "charges": charges,
             "profit": profit,
+            "Renouvellement onduleurs": renouvellement_onduleur,
+            "Amortissement centrale": amortissement_centrale,
+            "Amortissement onduleurs":amortissement_onduleur,
+            "Résultat brut":resultat_brut,
             "tresorerie": tresorerie
         })
         
