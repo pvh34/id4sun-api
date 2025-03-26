@@ -51,11 +51,12 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
         charges=c*(1+inflation/100)**(annee-1)
         revenus_annuels = productible * puissance * tarif_achat*(1-degrad/100*annee)
         profit = (revenus_annuels) - charges
+        amortissement_onduleur=puissance*60/tpsonduleur
         if annee==tpsonduleur:
             renouvellement_onduleur=puissance*60
-            amortissement_onduleur=puissance*60/tpsonduleur
+            
         if annee <= tpsamortissement :
-            amortissement_centrale=capex*puissance/tpsamortissement    
+            amortissement_centrale=(capex*puissance-60*puissance)/tpsamortissement *1000   
         resultat_brut=profit-amortissement_onduleur-amortissement_centrale
         tresorerie += profit  # Mise à jour de la trésorerie
         tab.append({
