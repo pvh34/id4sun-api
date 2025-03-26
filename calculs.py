@@ -41,6 +41,9 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
     annee_rentabilite = "Jamais"  # Valeur par défaut si jamais la rentabilité n'est pas atteinte
     opex=calcul_couts_opex(puissance)
     # Création d'un tableau de suivi avec des objets/dictionnaires
+    renouvellement_onduleur = 0
+    amortissement_onduleur = 0
+    amortissement_centrale = 0
     tab = []
     tresorerie = -capex * puissance * 1000  # On commence avec un CAPEX négatif
     for annee in range(1, duree + 1):
@@ -75,15 +78,4 @@ def calcul_business_plan(capex, puissance, productible, tarif_achat, duree, infl
     return {"cashflow": tab, "annee_rentabilite": annee_rentabilite}
 
     
-# Exemple d'utilisation
-#if __name__ == "__main__":
-    capex = 50000
-    opex = 1000
-    puissance = 100
-    productible = 1200  # kWh/kWc
-    tarif_achat = 0.10  # €/kWh
-    
-    df, annee_rentable = calcul_business_plan(capex, opex, puissance, productible, tarif_achat)
-    print(df)
-    print(f"Année de rentabilité : {annee_rentable}")
 
